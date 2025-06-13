@@ -68,7 +68,7 @@ const UserSchema: Schema<User> = new Schema({
   messages: [MessageSchema],
 });
 
-// In Node JS, once we start the server, it will keep running until inturuption. But in Next JS, it doesn't know if the app is running for the 1st time, or it ran before. So when we export a model, we check if the model already present or create the model in mongoose and return it.
+// In Node JS, once we start the server, it will keep running until inturuption. But Next JS is an Edge time framework, means it doesn't know if the app is running for the 1st time, or it ran before. It won't keep running; it executes functions and everything as the requests come. So when we export a model, we check if the model already present or not; if not, create the model in mongoose and return it.
 
 const UserModel =
   (mongoose.models.User as mongoose.Model<User>) || // "mongoose.models.User" gives the existing model. "mongoose.Model<User>" is TS, means the return datatype will be '<User>', not any other datatype
